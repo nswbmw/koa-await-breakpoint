@@ -1,0 +1,9 @@
+{
+  "extends": "standard",
+  "rules": {
+    "camelcase": 0
+  },
+  "globals": {
+    "__dirname": true
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "name": "koa-await-breakpoint",
+  "version": "1.0.0",
+  "description": "Add breakpoints around `await` expression especially for koa@2.",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "test": "node example/app"
+  },
+  "keywords": [
+    "koa",
+    "await",
+    "breakpoint"
+  ],
+  "author": {
+    "name": "nswbmw",
+    "url": "https://github.com/nswbmw"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=8.1"
+  },
+  "dependencies": {
+    "debug": "3.1.0",
+    "escodegen": "1.9.0",
+    "esprima": "4.0.0",
+    "glob": "7.1.2",
+    "lodash": "4.17.4",
+    "node-uuid": "1.4.8",
+    "shimmer": "1.2.0",
+    "source-map-support": "0.5.0"
+  },
+  "devDependencies": {
+    "eslint": "4.15.0",
+    "eslint-config-standard": "11.0.0-beta.0",
+    "eslint-plugin-import": "2.8.0",
+    "eslint-plugin-node": "5.2.1",
+    "eslint-plugin-promise": "3.6.0",
+    "eslint-plugin-standard": "3.0.1",
+    "koa": "2.4.1",
+    "koa-route": "3.2.0",
+    "mongolass": "4.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nswbmw/koa-await-breakpoint"
+  }
+}
