@@ -92,12 +92,13 @@ module.exports = function (opt) {
       asyncIdMap.set(asyncId, ctx)
     }
 
+    let prevRecord
     if (requestId) {
-      _logger('beforeAwait')
+      prevRecord = _logger('beforeAwait')
     }
     const result = await fn.call(originalContext)
     if (requestId) {
-      _logger('afterAwait', result)
+      _logger('afterAwait', result, prevRecord && prevRecord.timestamp)
     }
     return result
 
@@ -105,7 +106,7 @@ module.exports = function (opt) {
       return ctx && ctx.app && _.get(ctx, requestIdPath)
     }
 
-    function _logger (type, result) {
+    function _logger (type, result, prevTimestamp) {
       const _this = _.pick(ctx, opt.filter.ctx)
       _this.request = _.pick(ctx.request, opt.filter.request)
       _this.response = _.pick(ctx.response, opt.filter.response)
@@ -120,10 +121,11 @@ module.exports = function (opt) {
         fn: fnStr,
         result
       }
-      addTake(ctx, record)
+      addTake(ctx, record, prevTimestamp)
       debug(record)
 
       store.save(record, ctx)
+      return record
     }
   }
 
@@ -280,9 +282,9 @@ module.exports = function (opt) {
   }
 }
 
-function addTake (ctx, record) {
+function addTake (ctx, record, prevTimestamp) {
   ctx.timestamps[record.step] = record.timestamp
-  const prevTimestamp = ctx.timestamps[record.step - 1]
+  prevTimestamp = prevTimestamp || ctx.timestamps[record.step - 1]
   if (prevTimestamp) {
     record.take = record.timestamp - prevTimestamp
   } else {
