@@ -20,6 +20,7 @@ $ curl -XPOST localhost:3000/users
 ```js
 // Generally, on top of the main file
 const koaAwaitBreakpoint = require('koa-await-breakpoint')({
+  name: 'api',
   files: ['./routes/*.js']
 })
 
@@ -56,6 +57,7 @@ log like:
 
 ```json
 {
+  "name": "api",
   "requestId": "222f66ec-7259-4d20-930f-2ac035c16e7b",
   "timestamp": "2018-01-15T05:02:18.827Z",
   "this": {
@@ -89,6 +91,7 @@ koa-await-breakpoint will print logs to console by default, if you want to save 
 
 require('koa-await-breakpoint')(option)
 
+- name{String}: service name added to log.
 - sourcemap{Boolean}: whether open sourcemap, default: `true`, will **increase** memory usage.
 - files{String[]}: files pattern, see [glob](https://github.com/isaacs/node-glob), required.
 - exclude_files{String[]}: exclude files pattern, default `[]`.

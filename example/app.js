@@ -1,5 +1,6 @@
 const path = require('path')
 const koaYieldBreakpoint = require('..')({
+  name: 'api',
   files: [path.join(__dirname, '**/*.js')]
 })
 

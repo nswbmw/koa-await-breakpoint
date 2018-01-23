@@ -61,6 +61,7 @@ module.exports = function (opt) {
   opt.filter.response = opt.filter.response || defaultOpt.filter.response
   debug('options: %j', opt)
 
+  const name = opt.name
   const loggerName = opt.loggerName
   const requestIdPath = opt.requestIdPath
   const files = opt.files
@@ -112,6 +113,7 @@ module.exports = function (opt) {
       _this.response = _.pick(ctx.response, opt.filter.response)
 
       const record = {
+        name,
         requestId,
         step: ++ctx.step,
         filename,
@@ -265,6 +267,7 @@ module.exports = function (opt) {
       _this.response = _.pick(ctx.response, opt.filter.response)
 
       const record = {
+        name,
         requestId: _.get(ctx, requestIdPath),
         timestamp: new Date(),
         this: _this,
