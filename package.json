@@ -1,6 +1,6 @@
 {
   "name": "koa-await-breakpoint",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Add breakpoints around `await` expression especially for koa@2.",
   "main": "index.js",
   "scripts": {
