@@ -287,7 +287,7 @@ module.exports = function (opt) {
         const errArr = errStackParser.parse(err)
         record.error = err
         record.fn = errArr[1].functionName
-        record.filename = errArr[1].functionName
+        record.filename = errArr[1].fileName
       }
       addTake(ctx, record)
       debug(record)
