@@ -14,6 +14,7 @@ require('source-map-support').install({
   }
 })
 
+const errStackParser = require('error-stack-parser')
 const assert = require('assert')
 const Module = require('module')
 const async_hooks = require('async_hooks')
@@ -283,11 +284,10 @@ module.exports = function (opt) {
         step: ++ctx.step
       }
       if (err) {
+        const errArr = errStackParser.parse(err)
         record.error = err
-        record.fn = err._fn
-        record.filename = err._filename
-        delete err._fn
-        delete err._filename
+        record.fn = errArr[1].functionName
+        record.filename = errArr[1].fileName
       }
       addTake(ctx, record)
       debug(record)
