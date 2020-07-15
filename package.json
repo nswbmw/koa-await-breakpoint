@@ -25,7 +25,7 @@
     "escodegen": "1.9.0",
     "esprima": "4.0.0",
     "glob": "7.1.2",
-    "lodash": "4.17.4",
+    "lodash": "4.17.19",
     "node-uuid": "1.4.8",
     "shimmer": "1.2.0",
     "source-map-support": "0.5.0"
